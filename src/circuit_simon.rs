@@ -227,10 +227,10 @@ impl plonk::Circuit<pallas::Base> for Circuit {
         let primary = meta.instance_column();
         meta.enable_equality(primary);
 
-        // // Permutation over all advice columns.
-        // for advice in advices.iter() {
-        //     meta.enable_equality(*advice);
-        // }
+        // Permutation over all advice columns.
+        for advice in advices.iter() {
+            meta.enable_equality(*advice);
+        }
 
         // Poseidon requires four advice columns, while ECC incomplete addition requires
         // six, so we could choose to configure them in parallel. However, we only use a
