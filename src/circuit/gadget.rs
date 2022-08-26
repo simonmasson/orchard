@@ -25,7 +25,7 @@ use halo2_proofs::{
     plonk::{self, Advice, Assigned, Column},
 };
 
-pub(in crate::circuit) mod add_chip;
+pub(crate) mod add_chip;
 
 impl super::Config {
     pub(super) fn add_chip(&self) -> add_chip::AddChip {
@@ -78,7 +78,7 @@ impl super::Config {
 }
 
 /// An instruction set for adding two circuit words (field elements).
-pub(in crate::circuit) trait AddInstruction<F: FieldExt>: Chip<F> {
+pub(crate) trait AddInstruction<F: FieldExt>: Chip<F> {
     /// Constraints `a + b` and returns the sum.
     fn add(
         &self,
@@ -93,7 +93,7 @@ pub(in crate::circuit) trait AddInstruction<F: FieldExt>: Chip<F> {
 /// Usages of this helper are technically superfluous, as the single-cell region is only
 /// ever used in equality constraints. We could eliminate them with a
 /// [write-on-copy abstraction](https://github.com/zcash/halo2/issues/334).
-pub(in crate::circuit) fn assign_free_advice<F: Field, V: Copy>(
+pub(crate) fn assign_free_advice<F: Field, V: Copy>(
     mut layouter: impl Layouter<F>,
     column: Column<Advice>,
     value: Value<V>,
