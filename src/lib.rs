@@ -21,6 +21,7 @@ mod address;
 pub mod builder;
 pub mod bundle;
 pub mod circuit;
+pub mod circuit_simon;
 mod constants;
 pub mod keys;
 pub mod note;
